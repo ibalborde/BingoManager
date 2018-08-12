@@ -1,9 +1,14 @@
 package GUI;
 
+import Model.DBManager;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 
-public class WelcomeController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class WelcomeController implements Initializable {
     public ChoiceBox listDB;
 
     @FXML
@@ -19,4 +24,9 @@ public class WelcomeController {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.listDB.getItems().addAll(DBManager.getInstance().getDatabases());
+
+    }
 }
