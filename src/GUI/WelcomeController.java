@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WelcomeController implements Initializable {
+
+    private DBManager dbManager;
+
     public ChoiceBox listDB;
 
     @FXML
@@ -19,14 +22,19 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void createDB(){
-        listDB.getItems().add("c9os");
-
+      String newName = null;
+      do {
+          newName = Helper.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
+      } while (newName == null || dbManager.getDatabasesNames().contains(newName));
+      dbManager.createDB(newName);
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.listDB.getItems().addAll(DBManager.getInstance().getDatabases());
-
+        this.dbManager = DBManager.getInstance();
+        this.listDB.setItems(dbManager.getDatabasesNames());
+        this.listDB.valueProperty().bindBidirectional(dbManager.currentDatabaseNameProperty());
     }
+
 }

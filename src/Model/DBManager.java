@@ -1,8 +1,16 @@
 package Model;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableObjectValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +41,8 @@ public class DBManager {
     private String basePath;
     private String databasesPath;
 
-    private List<String> databases;
+    private ObjectProperty<String> currentDatabaseName;
+    private ObservableList<String> databasesNames;
 
     private DBManager() {
         String home = System.getProperty("user.home");
@@ -46,20 +55,43 @@ public class DBManager {
         File databasesFolder = new File(databasesPath);
         databasesFolder.mkdirs();
 
-
-        this.databases = new ArrayList<>();
+        this.currentDatabaseName = new SimpleObjectProperty<>();
+        this.databasesNames = FXCollections.observableArrayList();
         File[] possibleDatabases = databasesFolder.listFiles();
         for (File f: possibleDatabases) {
             String name = f.getName();
             if (name.endsWith(".json")) {
-                databases.add(FilenameUtils.removeExtension(name));
+                String dbName = FilenameUtils.removeExtension(name);
+                databasesNames.add(dbName);
             }
         }
 
     }
 
+    public void createDB(String name) {
+        this.databasesNames.add(name);
+        this.currentDatabaseName.setValue(name);
+        File newFile = new File(getDatabasePath(name));
+        try {
+            FileUtils.writeStringToFile(newFile, "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public List<String> getDatabases() {
-        return databases;
+    private String getDatabasePath(String databaseName) {
+        return FilenameUtils.concat(databasesPath, databaseName + ".json");
+    }
+
+    public ObservableList<String> getDatabasesNames() {
+        return databasesNames;
+    }
+
+    public String getCurrentDatabaseName() {
+        return currentDatabaseName.get();
+    }
+
+    public ObjectProperty<String> currentDatabaseNameProperty() {
+        return currentDatabaseName;
     }
 }
