@@ -44,4 +44,27 @@ public class BingoGenerator {
         return key;
     }
 
+
+    public static Matrix<Integer> generateBingo() {
+        Matrix<Integer> bingoCard = new Matrix<>(3, 9);
+        int initDec = Helper.generateRandomInteger(0,7);
+        for (int row = 0; row < bingoCard.getRows(); row++) {
+            for (int col = 0; col < bingoCard.getColumns(); col++) {
+                int val = (initDec + row) * 10 + (col + 1);
+                bingoCard.set(row, col, val);
+            }
+        }
+
+        for (int row = 0; row < bingoCard.getRows(); row++) {
+            List<Integer> randomIndexes = Helper.generateRandomUniqueNumbersList(0,8, 4);
+            Iterator iterator = randomIndexes.iterator();
+            while (iterator.hasNext()) {
+                Integer col = (Integer) iterator.next();
+                bingoCard.set(row, col, null);
+            }
+        }
+
+        return bingoCard;
+    }
+
 }

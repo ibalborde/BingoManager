@@ -4,7 +4,7 @@ import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
 
-public class Helper {
+public class UIHelper {
 
     public static String getUserTextInput(String title, String header, String question) {
         TextInputDialog dialog = new TextInputDialog();
@@ -16,4 +16,5 @@ public class Helper {
 
         return result.isPresent() ? result.get() : null;
     }
+
 }

@@ -24,7 +24,7 @@ public class WelcomeController implements Initializable {
     public void createDB(){
       String newName = null;
       do {
-          newName = Helper.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
+          newName = UIHelper.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
       } while (newName == null || dbManager.getDatabasesNames().contains(newName));
       dbManager.createDB(newName);
     }
