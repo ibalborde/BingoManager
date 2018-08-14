@@ -6,7 +6,7 @@ import java.util.*;
 public class BingoGenerator {
 
     public static List<List<Integer>> generateBingos(int count) {
-        List<Integer> options = generateOptions(99);
+        List<Integer> options = generateOptions(90);
 
         HashMap<String, List<Integer>> bingos = new HashMap<>();
         while (bingos.size() < count) {

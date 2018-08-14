@@ -1,0 +1,11 @@
+Agregar contador de cuotas pagadas
+agregar buscador de cartones (por nombre/apellido asociado o numero asociado)
+
+datos: Nombre, apellido, nro doc, domicilio, telefono.
+
+mirar el tema de que a los bingos se les pueda asociar mas de una persona.
+y que una persona puede tener mas de un bingo.
+
+Ojo con la generacion de cartones, porque los talonarios son de 3x9 y los numeros se distribuyes
+1-9, 10-19, 20-29,...,80-90
+y tienen 5 numeros por fila...
