@@ -18,6 +18,7 @@ public class Main extends Application {
 //        for (List<Integer> l: BingoGenerator.generateBingos(100)) {
 //            System.out.println(l);
 //        }
+
         for (int i = 0; i < 100; i++) {
             BingoGenerator.generateBingo().printMatrix();
             System.out.println();
