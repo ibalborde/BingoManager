@@ -44,17 +44,26 @@ public class BingoGenerator {
         return key;
     }
 
-
+    /**
+     * Genera una matrix que representa un bingo
+     */
     public static Matrix<Integer> generateBingo() {
         Matrix<Integer> bingoCard = new Matrix<>(3, 9);
         int initDec = Helper.generateRandomInteger(0,7);
-        for (int row = 0; row < bingoCard.getRows(); row++) {
-            for (int col = 0; col < bingoCard.getColumns(); col++) {
-                int val = (initDec + row) * 10 + (col + 1);
-                bingoCard.set(row, col, val);
+
+        for (int col = 0; col < bingoCard.getColumns(); col++) {
+            int min = col * 10 + 1;
+            int max = min + 8;
+
+            List<Integer> numbers = Helper.generateRandomUniqueNumbersList(min, max, 3);
+            Collections.sort(numbers);
+
+            for (int row = 0; row < bingoCard.getRows(); row++) {
+                bingoCard.set(row, col, numbers.get(row));
             }
         }
 
+        // Elimina el contenido de algunos campos
         for (int row = 0; row < bingoCard.getRows(); row++) {
             List<Integer> randomIndexes = Helper.generateRandomUniqueNumbersList(0,8, 4);
             Iterator iterator = randomIndexes.iterator();
