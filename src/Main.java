@@ -15,12 +15,9 @@ public class Main extends Application {
         primaryStage.setTitle("Bingo Manager");
         primaryStage.setScene(new Scene(root, 450, 200));
         //primaryStage.show();
-//        for (List<Integer> l: BingoGenerator.generateBingos(100)) {
-//            System.out.println(l);
-//        }
 
-        for (int i = 0; i < 100; i++) {
-            BingoGenerator.generateBingo().printMatrix();
+        for (Matrix<Integer> bingo: BingoGenerator.generateBingos(15)) {
+            bingo.printMatrix();
             System.out.println();
         }
     }

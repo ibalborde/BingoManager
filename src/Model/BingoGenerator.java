@@ -5,55 +5,27 @@ import java.util.*;
 
 public class BingoGenerator {
 
-    public static List<List<Integer>> generateBingos(int count) {
-        List<Integer> options = generateOptions(90);
-
-        HashMap<String, List<Integer>> bingos = new HashMap<>();
+    /**
+     * Genera una lista de Bingos
+     * @param count Cantidad de bingos a generar
+     */
+    public static List<Matrix<Integer>> generateBingos(int count) {
+        ArrayList<Matrix<Integer>> bingos = new ArrayList<>();
         while (bingos.size() < count) {
-            List<Integer> option = generateSingleBingo(options);
-            String key = generateBingoKey(option);
-            bingos.putIfAbsent(key, option);
+            Helper.addUniqueElementToList(generateBingo(), bingos);
         }
-
-        return  new ArrayList<List<Integer>>(bingos.values());
-    }
-
-    private static List<Integer> generateOptions(int maxValue) {
-        ArrayList<Integer> options = new ArrayList<>();
-        for(int i = 1; i <= maxValue; i++) {
-            options.add(i);
-        }
-        return options;
-    }
-
-    private static List<Integer> generateSingleBingo(List<Integer> options) {
-        Collections.shuffle(options);
-        List<Integer> option = new ArrayList<>(options.subList(0,15));
-        return option;
-    }
-
-    private static String generateBingoKey(List<Integer> opt) {
-        ArrayList<Integer> option = new ArrayList<>(opt);
-        option.sort((v1, v2) -> v1.compareTo(v2));
-
-        String key = "";
-        Iterator iterator = option.iterator();
-        while (iterator.hasNext()) {
-            key += iterator.next().toString() + "-";
-        }
-        return key;
+        return bingos;
     }
 
     /**
-     * Genera una matrix que representa un bingo
+     * Genera una matriz que representa un bingo
      */
     public static Matrix<Integer> generateBingo() {
         Matrix<Integer> bingoCard = new Matrix<>(3, 9);
-        int initDec = Helper.generateRandomInteger(0,7);
 
         for (int col = 0; col < bingoCard.getColumns(); col++) {
-            int min = col * 10 + 1;
-            int max = min + 8;
+            int min = getMinBoundForCol(col);
+            int max = getMaxBoundForCol(col);
 
             List<Integer> numbers = Helper.generateRandomUniqueNumbersList(min, max, 3);
             Collections.sort(numbers);
@@ -74,6 +46,24 @@ public class BingoGenerator {
         }
 
         return bingoCard;
+    }
+
+    // MARK: - Private Methods
+
+    /**
+     * Retorna el valor mímimo aceptable para una columna
+     * @param col columna a trabajar
+     */
+    private static int getMinBoundForCol(int col) {
+        return col == 0 ? 1 : col * 10;
+    }
+
+    /**
+     * Retorna el valor máximo aceptable para una columna
+     * @param col columna a trabajar
+     */
+    private static int getMaxBoundForCol(int col) {
+        return col == 8 ? 90 : col * 10 + 9;
     }
 
 }
