@@ -11,15 +11,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/welcome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/BingoCardView/BingoCardView.fxml"));
         primaryStage.setTitle("Bingo Manager");
         primaryStage.setScene(new Scene(root, 450, 200));
-        //primaryStage.show();
+        primaryStage.show();
 
-        for (Matrix<Integer> bingo: BingoGenerator.generateBingos(15)) {
+        /*for (Matrix<Integer> bingo: BingoGenerator.generateBingos(15)) {
             bingo.printMatrix();
             System.out.println();
-        }
+        }*/
     }
 
 
