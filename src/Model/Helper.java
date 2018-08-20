@@ -1,5 +1,7 @@
 package Model;
 
+import org.json.JSONArray;
+
 import java.util.*;
 
 public class Helper {
@@ -15,12 +17,8 @@ public class Helper {
             return false;
         }
 
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()) {
-            T tempElement = (T) iterator.next();
-            if (tempElement.equals(element)) {
-                return false;
-            }
+        if (list.contains(element)) {
+            return false;
         }
 
         list.add(element);
@@ -52,6 +50,20 @@ public class Helper {
         List<Integer> result = new ArrayList<>();
         while (result.size() < count) {
             addUniqueElementToList(generateRandomInteger(lowBound, highBound) , result);
+        }
+        return result;
+    }
+
+    /**
+     * Convierte un JSONArray a una lista de Strings
+     */
+    public static List<String> JSONArrayToStringList(JSONArray arr) {
+        if (arr == null) {
+            return null;
+        }
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0; i < arr.length(); i++) {
+            result.add(arr.optString(i));
         }
         return result;
     }
