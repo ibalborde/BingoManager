@@ -1,6 +1,4 @@
-import Model.BingoGenerator;
-import Model.Helper;
-import Model.Matrix;
+import Model.Database.DBManager;
 import Model.test;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +10,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/BingoCardView/BingoCardView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/BingoManager/BingoManager.fxml"));
         primaryStage.setTitle("Bingo Manager");
-        primaryStage.setScene(new Scene(root, 450, 200));
+        primaryStage.setScene(new Scene(root, 800, 400)); // 450 200
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(400);
         primaryStage.show();
 
         /*for (Matrix<Integer> bingo: BingoGenerator.generateBingos(15)) {
@@ -25,7 +25,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        //launch(args);
         test.testDB();
+        DBManager.getInstance().currentDatabaseNameProperty().setValue("test");
+        launch(args);
     }
 }

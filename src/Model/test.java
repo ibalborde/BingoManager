@@ -1,12 +1,8 @@
 package Model;
 
-import com.sun.xml.internal.rngom.digested.DDataPattern;
-import org.apache.commons.io.FilenameUtils;
-import org.json.JSONObject;
-import sun.plugin.extension.ExtensionUtils;
+import Model.Database.DBManager;
+import Model.Database.Database;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 public class test {
@@ -40,34 +36,23 @@ public class test {
 
         DBManager dbManager = DBManager.getInstance();
 
-        //dbManager.createDB("test");
+        dbManager.createDB("test");
 
-//        try {
-//            dbManager.loadDatabase("test");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-
+//        dbManager.currentDatabaseNameProperty().setValue("test");
 //        Database currDB = dbManager.getCurrentDatabase();
+//        System.out.println(currDB.getBingos().size());
+//        currDB.addNewBingos(5);
+//        System.out.println(currDB.getBingos().size());
 
-       // String cid = currDB.addNewClient("Carlos", "Rod", "12","sasa", "435");
-//        currDB.getClientsIndex().get(cid).getName());
-//        dbManager.saveClientsDB();
+    }
 
-//        String cid = currDB.getClients().get(0).getId();
-//
-//        currDB.addNewBingos(50);
-//
-//        String bid = currDB.getBingos().get(0).getId();
-//
-//        currDB.addNewSell(bid, cid);
-//        currDB.getSells().forEach((k,v) -> {
-//            System.out.println(v);
-//        });
-
-
+    public static void testSearch() {
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            String pattern = scanner.nextLine();
+            String text = scanner.nextLine();
+            System.out.println(Helper.match(pattern, text));
+        }
     }
 
 }

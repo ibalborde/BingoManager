@@ -1,6 +1,6 @@
 package GUI;
 
-import Model.DBManager;
+import Model.Database.DBManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -25,8 +25,7 @@ public class WelcomeController implements Initializable {
       String newName = null;
       do {
           newName = UIHelper.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
-      } while (newName == null || dbManager.getDatabasesNames().contains(newName));
-      dbManager.createDB(newName);
+      } while (newName == null || dbManager.createDB(newName));
     }
 
 
@@ -34,7 +33,7 @@ public class WelcomeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.dbManager = DBManager.getInstance();
         this.listDB.setItems(dbManager.getDatabasesNames());
-        this.listDB.valueProperty().bindBidirectional(dbManager.currentDatabaseNameProperty());
+        this.listDB.valueProperty().bindBidirectional(dbManager.lastSetDatabaseNameProperty());
     }
 
 }

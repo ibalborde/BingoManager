@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
-public class BingoCardViewController implements Initializable {
+public class BingoCardView implements Initializable {
 
     @FXML
     private GridPane gridViews;

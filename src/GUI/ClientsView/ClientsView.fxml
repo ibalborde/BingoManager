@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" spacing="4.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ClientsView.ClientsView">
+    <children>
+        <fx:include fx:id="inventoryListView" source="../InventoryListView/InventoryListView.fxml" VBox.vgrow="ALWAYS" />
+        <HBox alignment="CENTER_LEFT" spacing="8.0">
+            <children>
+                <Label text="Cliente:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="clientIDLabel" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT">
+            <children>
+                <Label fx:id="clientNameLabel" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="showDetailsButton" disable="true" onAction="#showDetails" text="Mostrar Detalles" />
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+    </padding>
+</VBox>

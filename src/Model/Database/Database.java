@@ -1,8 +1,8 @@
-package Model;
+package Model.Database;
 
+import Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -14,60 +14,35 @@ public class Database {
     private ObservableList<BingoCard> bingos;
     private ObservableList<Client> clients;
 
-    private HashMap<String, List<String>> sells;
     private HashMap<String, Client> clientsIndex;
     private HashMap<String, BingoCard> bingosIndex;
 
     // MARK: - Init
 
-    public Database(JSONArray jsonClients, JSONArray jsonBingos, JSONArray jsonSells) {
+    /**
+     * Crea una instancia de una base de datos
+     * @param jsonClients Lista de JSONObjects con la infomración de los clientes
+     * @param jsonBingos Lista de JSONObjects con la infomración de los bingos
+     */
+    public Database(List<JSONObject> jsonClients, List<JSONObject> jsonBingos) {
         this.clients = FXCollections.observableArrayList();
         this.clientsIndex = new HashMap<>();
-        for (Object o: jsonClients) {
-            Client client = new Client((JSONObject) o);
+        for (JSONObject json: jsonClients) {
+            Client client = new Client(json);
             this.clients.add(client);
-            this.clientsIndex.put(client.getId(), client);
+            this.clientsIndex.put(client.getId().get(), client);
         }
 
         this.bingos = FXCollections.observableArrayList();
         this.bingosIndex = new HashMap<>();
-        for (Object o: jsonBingos) {
-            BingoCard bingo = new BingoCard((JSONObject) o);
+        for (JSONObject json: jsonBingos) {
+            BingoCard bingo = new BingoCard(json);
             this.bingos.add(bingo);
-            this.bingosIndex.put(bingo.getId(), bingo);
-        }
-
-        this.sells = new HashMap<>();
-        for (Object o: jsonSells) {
-            JSONObject sell = (JSONObject) o;
-            String bingoID = sell.getString("bingo_id");
-            this.sells.put(bingoID, Helper.JSONArrayToStringList(sell.getJSONArray("clients_ids")));
+            this.bingosIndex.put(bingo.getId().get(), bingo);
         }
     }
 
-    // MARK: - JSON Serialization
-
-    public JSONArray clientsToJSONObject() {
-        Object[] temp = clients.stream().map(Client::toJSONObject).toArray();
-        return new JSONArray(temp);
-    }
-
-    public JSONArray bingosToJSONObject() {
-        Object[] temp = bingos.stream().map(BingoCard::toJSONObject).toArray();
-        return new JSONArray(temp);
-    }
-
-    public JSONArray sellsToJSONObject() {
-        Object[] temp = sells.keySet().stream().map(bingoID -> {
-            JSONObject sell = new JSONObject();
-            sell.put("bingo_id", bingoID);
-            sell.put("clients_ids", sells.get(bingoID));
-            return sell;
-        }).toArray();
-        return new JSONArray(temp);
-    }
-
-    // Insert
+    // MARK: - Create
 
     /**
      * Dado cun conjunto de ids usados retorna un nuevo id único
@@ -78,7 +53,7 @@ public class Database {
         Random r = new Random();
         String newKey = "";
         do {
-            newKey = "" + r.nextLong() + r.nextLong();
+            newKey = "" + Math.abs(r.nextLong()) + Math.abs(r.nextLong());
         } while (currentIDs.contains(newKey));
         return newKey;
     }
@@ -90,8 +65,12 @@ public class Database {
     public String addNewClient(String name, String lastName, String dni, String address, String telephone) {
         String newID = generateNewID(clientsIndex.keySet());
         Client newClient = new Client(newID, name, lastName, dni, address, telephone);
+
+        DBManager.getInstance().saveData(newClient);
+
         this.clientsIndex.put(newID, newClient);
         this.clients.add(newClient);
+
         return newID;
     }
 
@@ -122,6 +101,8 @@ public class Database {
         String newID = generateNewID(bingosIndex.keySet());
         BingoCard newBingo = new BingoCard(newID, bingoMatrix);
 
+        DBManager.getInstance().saveData(newBingo);
+
         this.bingosIndex.put(newID, newBingo);
         this.bingos.add(newBingo);
 
@@ -147,23 +128,12 @@ public class Database {
      * @param client ID del cliente
      */
     public void addNewSell(String bingoID, String client) {
-        if (sells.containsKey(bingoID)) {
-            List<String> clients = sells.get(bingoID);
-            clients.add(client);
-        } else {
-            List<String> clients = new ArrayList<>();
-            clients.add(client);
-            sells.put(bingoID, clients);
-        }
+        BingoCard bingo = bingosIndex.get(bingoID);
+        bingo.addOwner(client);
+        DBManager.getInstance().saveData(bingo);
     }
 
-    /**
-     * Elimina una venta
-     * @param bingoID ID del bingo a eliminar ventas
-     */
-    public void removeSellEntry(String bingoID) {
-        sells.remove(bingoID);
-    }
+    // MARK: - Deletions
 
     /**
      * Elimina un cliente de una compra de bingo
@@ -172,15 +142,54 @@ public class Database {
      * @param clientID Identificador del cliente
      */
     public void removeClientFromSell(String bingoID, String clientID) {
-        List<String> clients = sells.get(bingoID);
-        if (clients == null) {
-            return;
-        }
-        if (clients.size() == 1) {
-            sells.remove(bingoID);
-        } else {
-            clients.remove(clientID);
-        }
+        BingoCard bingo = bingosIndex.get(bingoID);
+        bingo.removeOwner(clientID);
+        DBManager.getInstance().saveData(bingo);
+    }
+
+    /**
+     * Elimina un cliente dado su ID (No guarda los cambios)
+     */
+    public void removeClient(String clientID) {
+        DBManager dbManager = DBManager.getInstance();
+
+        Client client = clientsIndex.remove(clientID);
+        clients.remove(client);
+        dbManager.deleteDataBaseItem(client);
+
+        retrieveClientBingsCards(clientID).forEach( bingo -> {
+            bingo.removeOwner(clientID);
+            dbManager.deleteDataBaseItem(bingo);
+        });
+    }
+
+    /**
+     * Elimina un bingo dado su ID (No guarda los cambios)
+     */
+    public void removeBingo(String bingoID) {
+        BingoCard bingoCard = bingosIndex.remove(bingoID);
+        bingos.remove(bingoCard);
+        DBManager.getInstance().deleteDataBaseItem(bingoCard);
+    }
+
+    // MARK: - Retrieving
+
+    public List<BingoCard> retrieveClientBingsCards(String clientID) {
+        List<BingoCard> bingos = new ArrayList<>();
+        bingosIndex.forEach((id, bingo) -> {
+            if (bingo.getOwners().contains(clientID)) {
+                bingos.add(bingo);
+            }
+        });
+        return bingos;
+    }
+
+    public List<Client> retrieveBingoOwners(String bingoID) {
+        Object[] clients = bingosIndex.get(bingoID).getOwners().stream().map(it -> {
+            return bingosIndex.get(it);
+        }).toArray();
+
+        return Arrays.asList((Client[]) clients);
     }
 
     // Getters
@@ -191,10 +200,6 @@ public class Database {
 
     public ObservableList<Client> getClients() {
         return clients;
-    }
-
-    public HashMap<String, List<String>> getSells() {
-        return sells;
     }
 
     public HashMap<String, Client> getClientsIndex() {
