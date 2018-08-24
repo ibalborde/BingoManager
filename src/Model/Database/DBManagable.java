@@ -7,5 +7,5 @@ public interface DBManagable {
 
     public JSONObject toJSONObject();
 
-    public StringProperty getId();
+    public String getId();
 }

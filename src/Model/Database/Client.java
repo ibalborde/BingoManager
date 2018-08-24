@@ -94,8 +94,8 @@ public class Client implements DBManagable{
 
     // MARK: - DBManagable
 
-    public StringProperty getId() {
-        return id;
+    public String getId() {
+        return id.get();
     }
 
     public JSONObject toJSONObject() {

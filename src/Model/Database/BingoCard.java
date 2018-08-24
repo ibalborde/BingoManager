@@ -104,8 +104,8 @@ public class BingoCard implements DBManagable {
     }
 
     @Override
-    public StringProperty getId() {
-        return this.id;
+    public String getId() {
+        return this.id.get();
     }
 
 }

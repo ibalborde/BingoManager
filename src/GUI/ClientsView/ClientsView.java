@@ -2,6 +2,8 @@ package GUI.ClientsView;
 
 import GUI.InventoryListView.FilterDelegate;
 import GUI.InventoryListView.InventoryListView;
+import GUI.UIHelper;
+import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
 import Model.Database.Database;
@@ -34,19 +36,33 @@ public class ClientsView implements Initializable, FilterDelegate<Client> {
         inventoryListViewController.getAddButton().setOnAction( e -> {
             db.addNewClient("carlos", "h", "", "", "");
         });
+        inventoryListViewController.getRemoveButton().setOnAction(e -> {
+            TableView<Client> table = inventoryListViewController.getTableView();
+            Client selectedItem = table.getSelectionModel().getSelectedItem();
+
+            String id = selectedItem.getId();
+            if (UIHelper.confirmDeletion("cliente " + selectedItem.getFullName())) {
+                DBManager.getInstance().getCurrentDatabase().removeClient(id);
+            }
+        });
 
         setupTable();
     }
 
+    /**
+     * Prapara la tabla para mostrar la información
+     */
     private void setupTable() {
         TableView<Client> table = inventoryListViewController.getTableView();
 
         table.getSelectionModel().selectedItemProperty().addListener((obs, o, n) -> {
             setCurrentItem(n);
+            inventoryListViewController.getRemoveButton().setDisable(n == null);
+            showDetailsButton.setDisable(n == null);
         });
 
         TableColumn<Client, String> idCol = new TableColumn<>("ID");
-        idCol.setCellValueFactory(it -> it.getValue().getId());
+        idCol.setCellValueFactory(it -> it.getValue().idProperty());
 
         TableColumn<Client, String> nameCol = new TableColumn<>("Nombre");
         nameCol.setCellValueFactory(it -> it.getValue().nameProperty());
@@ -60,14 +76,18 @@ public class ClientsView implements Initializable, FilterDelegate<Client> {
         TableColumn<Client, String> telephoneCol = new TableColumn<>("Teléfono");
         telephoneCol.setCellValueFactory(it -> it.getValue().telephoneProperty());
 
-        table.getColumns().addAll(nameCol, lastNameCol, telephoneCol, addressCol, idCol);
+        TableColumn<Client, String> dniCol = new TableColumn<>("Dni");
+        dniCol.setCellValueFactory(it -> it.getValue().dniProperty());
+
+        table.getColumns().addAll(nameCol, lastNameCol, dniCol, telephoneCol, addressCol, idCol);
         table.widthProperty().addListener((obs, o, n) -> {
-            Double newWidth = n.doubleValue() / 5;
+            Double newWidth = n.doubleValue() / 6;
             idCol.setPrefWidth(newWidth);
             nameCol.setPrefWidth(newWidth);
             lastNameCol.setPrefWidth(newWidth);
             addressCol.setPrefWidth(newWidth);
             telephoneCol.setPrefWidth(newWidth);
+            dniCol.setPrefWidth(newWidth);
         });
     }
 
@@ -80,7 +100,7 @@ public class ClientsView implements Initializable, FilterDelegate<Client> {
             clientIDLabel.setText(null);
             clientNameLabel.setText(null);
         } else {
-            clientIDLabel.setText(client.getId().get());
+            clientIDLabel.setText(client.getId());
             clientNameLabel.setText(client.getFullName());
         }
     }

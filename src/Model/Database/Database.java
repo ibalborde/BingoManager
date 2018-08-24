@@ -30,7 +30,7 @@ public class Database {
         for (JSONObject json: jsonClients) {
             Client client = new Client(json);
             this.clients.add(client);
-            this.clientsIndex.put(client.getId().get(), client);
+            this.clientsIndex.put(client.getId(), client);
         }
 
         this.bingos = FXCollections.observableArrayList();
@@ -38,7 +38,7 @@ public class Database {
         for (JSONObject json: jsonBingos) {
             BingoCard bingo = new BingoCard(json);
             this.bingos.add(bingo);
-            this.bingosIndex.put(bingo.getId().get(), bingo);
+            this.bingosIndex.put(bingo.getId(), bingo);
         }
     }
 

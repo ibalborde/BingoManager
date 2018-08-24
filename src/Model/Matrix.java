@@ -1,5 +1,6 @@
 package Model;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,7 +48,11 @@ public class Matrix<Element> {
         this.data = new ArrayList<>();
 
         for (Object o: json.getJSONArray("values")) {
-            this.data.add((Element) o);
+            if (o == JSONObject.NULL) {
+                this.data.add(null);
+            } else {
+                this.data.add((Element) o);
+            }
         }
     }
 

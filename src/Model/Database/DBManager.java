@@ -204,7 +204,7 @@ public class DBManager {
             return null;
         }
 
-        return getDatabaseItem(subDBPath, item.getId().get());
+        return getDatabaseItem(subDBPath, item.getId());
     }
 
     /**
@@ -213,7 +213,6 @@ public class DBManager {
      */
     public void saveData(DBManagable item) {
         String path = getDBItemPath(item);
-        System.out.println(path);
         if (path == null) {
             return;
         }
@@ -228,8 +227,8 @@ public class DBManager {
     }
 
     /**
-     *
-     * @param item
+     * Elimina un item de la base de datos
+     * @param item Elemento a eliminar
      */
     public void deleteDataBaseItem(DBManagable item) {
         Database db = getCurrentDatabase();
