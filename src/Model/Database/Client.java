@@ -38,7 +38,7 @@ public class Client implements DBManagable{
         this.telephone = new SimpleStringProperty(telephone);
     }
 
-    // MARK: - Getters
+    // MARK: - Getters && Setters
 
     public String getName() {
         return name.get();
@@ -90,6 +90,12 @@ public class Client implements DBManagable{
 
     public StringProperty idProperty() {
         return id;
+    }
+
+    public void setId(String id) {
+        if (this.getId() == null) {
+            this.id.set(id);
+        }
     }
 
     // MARK: - DBManagable

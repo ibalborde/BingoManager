@@ -1,5 +1,6 @@
 package GUI.ClientsView;
 
+import GUI.DialogsGenerator;
 import GUI.InventoryListView.FilterDelegate;
 import GUI.InventoryListView.InventoryListView;
 import GUI.UIHelper;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ClientsView implements Initializable, FilterDelegate<Client> {
@@ -34,7 +36,7 @@ public class ClientsView implements Initializable, FilterDelegate<Client> {
         inventoryListViewController.setModel(db.getClients());
 
         inventoryListViewController.getAddButton().setOnAction( e -> {
-            db.addNewClient("carlos", "h", "", "", "");
+            DialogsGenerator.askForNewClient().ifPresent(client -> db.addNewClient(client));
         });
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
             TableView<Client> table = inventoryListViewController.getTableView();
@@ -48,6 +50,8 @@ public class ClientsView implements Initializable, FilterDelegate<Client> {
 
         setupTable();
     }
+
+    // MARK: - Internal
 
     /**
      * Prapara la tabla para mostrar la información

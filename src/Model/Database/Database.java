@@ -63,13 +63,27 @@ public class Database {
      * @return ID del objeto registrado
      */
     public String addNewClient(String name, String lastName, String dni, String address, String telephone) {
+        Client newClient = new Client(null, name, lastName, dni, address, telephone);
+        return addNewClient(newClient);
+    }
+
+    /**
+     * Agrega un nuevo cliente a la base de datos
+     * Si el objeto tiene un id no se agregará
+     * @param client Objeto cliente a agregar
+     * @return ID del nuevo objeto agregado
+     */
+    public String addNewClient(Client client) {
+        if (client.getId() != null) {
+            return null;
+        }
         String newID = generateNewID(clientsIndex.keySet());
-        Client newClient = new Client(newID, name, lastName, dni, address, telephone);
+        client.setId(newID);
 
-        DBManager.getInstance().saveData(newClient);
+        DBManager.getInstance().saveData(client);
 
-        this.clientsIndex.put(newID, newClient);
-        this.clients.add(newClient);
+        this.clientsIndex.put(newID, client);
+        this.clients.add(client);
 
         return newID;
     }

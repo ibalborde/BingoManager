@@ -1,5 +1,6 @@
-package GUI;
+package GUI.WelcomeController;
 
+import GUI.UIHelper;
 import Model.Database.DBManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
