@@ -161,4 +161,28 @@ public class DialogsGenerator {
 
         return dialog.showAndWait();
     }
+
+    /**
+     * Pregunta al usuario si quiere comenzar a jugar
+     */
+    public static boolean askToPlay() {
+        // Crea el cuadro de dialogo personalizado
+        Dialog<Integer> dialog = new Dialog<>();
+        dialog.setTitle("Antes de empezar");
+        dialog.setHeaderText("¿Está seguro que desea iniciar una partida?");
+
+        // Configura los botones
+        ButtonType cancelButtonType  = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType startButtonType = new ButtonType("Comenzar", ButtonBar.ButtonData.OK_DONE);
+
+        dialog.getDialogPane().getButtonTypes().addAll(cancelButtonType, startButtonType);
+
+        // Obtiene el resultado
+        dialog.setResultConverter(dialogButton -> {
+            return dialogButton == startButtonType ? 1 : null;
+        });
+
+        Optional<Integer> result = dialog.showAndWait();
+        return result.isPresent() && result.get() == 1;
+    }
 }

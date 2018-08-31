@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.util.Pair;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -36,13 +38,38 @@ public class BingoGenerator {
         }
 
         // Elimina el contenido de algunos campos
-        for (int row = 0; row < bingoCard.getRows(); row++) {
-            List<Integer> randomIndexes = Helper.generateRandomUniqueNumbersList(0,8, 4);
-            Iterator iterator = randomIndexes.iterator();
-            while (iterator.hasNext()) {
-                Integer col = (Integer) iterator.next();
-                bingoCard.set(row, col, null);
+        List<Pair<Integer, Integer>> indexes = new ArrayList<>();
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 9; col++) {
+                indexes.add(new Pair<>(row, col));
             }
+        }
+
+
+
+
+        List<Integer> itemsInRow = new ArrayList<>(Collections.nCopies(3,9));
+        List<Integer> itemsInCol = new ArrayList<>(Collections.nCopies(9,3));
+        int inRow = 0;
+        int inCol = 0;
+        while (indexes.size() > 15) {
+            int i = Helper.generateRandomInteger(0,indexes.size() - 1);
+            Pair<Integer, Integer> pair = indexes.get(i);
+
+            int row = pair.getKey();
+            int col = pair.getValue();
+
+            inRow = itemsInRow.get(row);
+            inCol = itemsInCol.get(col);
+
+
+            if (inRow > 5 && inCol > 1) {
+                bingoCard.set(row, col, null);
+                indexes.remove(i);
+                itemsInRow.set(row, inRow - 1);
+                itemsInCol.set(col, inCol - 1);
+            }
+
         }
 
         return bingoCard;
