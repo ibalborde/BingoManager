@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/BingosView/BingosView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingosView/BingosView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/UIHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/UIHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/todo.md" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -205,11 +201,37 @@
       <file leaf-file-name="BingoManager.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="21" column="99" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="99" />
+            <state relative-caret-position="185">
+              <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="BingoManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="62">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BingoPlayView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#602#603#0" expanded="true" />
+                <element signature="e#647#648#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="ClientsView.java" pinned="false" current-in-tab="false">
@@ -221,10 +243,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BingosView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BingosView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/BingosView/BingosView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="-1721">
               <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
@@ -328,13 +350,13 @@
         <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml" />
         <option value="$PROJECT_DIR$/src/GUI/DialogsGenerator.java" />
         <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java" />
-        <option value="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml" />
         <option value="$PROJECT_DIR$/src/GUI/InventoryListViewHelper.java" />
-        <option value="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java" />
         <option value="$PROJECT_DIR$/src/GUI/UIHelper.java" />
         <option value="$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java" />
         <option value="$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java" />
         <option value="$PROJECT_DIR$/src/GUI/BingosView/BingosView.java" />
+        <option value="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml" />
+        <option value="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java" />
       </list>
     </option>
   </component>
@@ -895,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TabPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -935,27 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="42" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1411">
@@ -970,6 +964,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/BingosView/BingosView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1721">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -977,18 +978,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="21" column="99" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="99" />
+        <state relative-caret-position="185">
+          <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/BingosView/BingosView.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="62">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

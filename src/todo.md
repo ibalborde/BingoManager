@@ -6,3 +6,4 @@ Cosas a hacer
 - [ ] Agregar dialogo de detalle de cliente
 - [ ] Agregar dialogo de detalle de Bingo
 - [ ] Agregar funcionalidad para jugar
+- [ ] Permitir eliminar varios elementos
