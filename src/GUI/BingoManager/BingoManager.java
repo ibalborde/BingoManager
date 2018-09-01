@@ -2,7 +2,6 @@ package GUI.BingoManager;
 
 import GUI.BingoPlayView.BingoPlayView;
 import GUI.DialogsGenerator;
-import GUI.UIHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
@@ -38,9 +37,9 @@ public class BingoManager implements Initializable {
                 }
             }
         });
-        bingoPlayViewController.isPlayingProperty().addListener((obs, o, n) -> {
-            bingosTab.setDisable(n);
-            clientsTab.setDisable(n);
-        });
+//        bingoPlayViewController.isPlayingProperty().addListener((obs, o, n) -> {
+//            bingosTab.setDisable(n);
+//            clientsTab.setDisable(n);
+//        });
     }
 }

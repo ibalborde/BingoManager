@@ -19,7 +19,7 @@
             </Tab>
              <Tab closable="false" text="Jugar" fx:id="playTab">
                  <content>
-                     <fx:include source="../BingoPlayView/BingoPlayView.fxml" fx:id="bingoPlayView" VBox.vgrow="ALWAYS"/>
+                     <fx:include source="../BingoPlayView/BingoPlayView.fxml" fx:id="bingoPlayViewL" VBox.vgrow="ALWAYS"/>
                  </content>
              </Tab>
          </tabs></TabPane>

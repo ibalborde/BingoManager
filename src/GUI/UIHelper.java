@@ -33,11 +33,11 @@ public class UIHelper {
      * @return true si se ha confirmado
      */
     public static boolean confirmDeletion(String itemName) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Confirmación de eliminación");
         alert.setHeaderText("¿Está seguro que desea eliminar " + itemName);
 
-        ButtonType deleteButton = new ButtonType("Eliminar");
+        ButtonType deleteButton = new ButtonType("Eliminar", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(deleteButton, cancelButton);
