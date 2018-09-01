@@ -4,6 +4,9 @@ Cosas a hacer
 - [x] Cambiar íconos de opciones elminar
 - [ ] Agregar filtro de bingos vendidos / no vendidos
 - [ ] Agregar dialogo de detalle de cliente
-- [ ] Agregar dialogo de detalle de Bingo
+- [x] Agregar dialogo de detalle de Bingo
 - [ ] Agregar funcionalidad para jugar
-- [ ] Permitir eliminar varios elementos
+- [x] Permitir eliminar varios elementos
+- [ ] Buscador no acepta doble espacio
+- [ ] Advertir antes de elimnar un bingo comprado
+- [ ] Ver qué hacer al eliminar un cliente que tiene bingos

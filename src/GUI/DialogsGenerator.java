@@ -1,17 +1,23 @@
 package GUI;
 
 import GUI.CustomTextFields.NumberSpinner;
+import GUI.InventoryListView.InventoryListView;
 import Model.Database.Client;
+import Model.Database.DBManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.stage.Modality;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +32,7 @@ public class DialogsGenerator {
     public static Optional<Integer> askCountNewBingos() {
         // Crea el cuadro de dialogo personalizado
         Dialog<Integer> dialog = new Dialog<>();
+        dialog.initModality(Modality.WINDOW_MODAL);
         dialog.setTitle("Crear Bingos");
         dialog.setHeaderText("¿Cuántos bingos quiere crear?");
 
@@ -184,5 +191,50 @@ public class DialogsGenerator {
 
         Optional<Integer> result = dialog.showAndWait();
         return result.isPresent() && result.get() == 1;
+    }
+
+    public static Optional<List<Client>> askForClientList() throws IOException {
+        Dialog<List<Client>> dialog = new Dialog<>();
+        dialog.setTitle("Clientes");
+        dialog.setHeaderText("Seleccione los clientes");
+
+        // Configura los botones
+        ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType selectButtonType = new ButtonType("Seleccionar", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(cancelButton, selectButtonType);
+
+        // Busca el botón de aceptar
+        Node okButton = dialog.getDialogPane().lookupButton(selectButtonType);
+        okButton.setDisable(true);
+
+        // Preapara el contenido
+        URL url = DialogsGenerator.class.getResource("InventoryListView/InventoryListView.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Node content = fxmlLoader.load();
+        InventoryListView<Client> inventoryListView = (InventoryListView<Client>) fxmlLoader.getController();
+        dialog.getDialogPane().setContent(content);
+
+        // Configura la tabla
+        InventoryListViewSetter.prepareClientInventory(inventoryListView);
+        inventoryListView.getAddButton().getParent().setVisible(false);
+        inventoryListView.getTableView().getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        // Carga los datos
+        inventoryListView.setModel(DBManager.getInstance().getCurrentDatabase().getClients());
+
+        TableSelectionModel<Client> selectionModel =  inventoryListView.getTableView().getSelectionModel();
+        selectionModel.selectedItemProperty().addListener((obs, o, n) -> {
+            okButton.setDisable(selectionModel.getSelectedIndices().isEmpty());
+        });
+
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType != selectButtonType) {
+                return null;
+            }
+            return selectionModel.getSelectedItems();
+
+        });
+
+        return dialog.showAndWait();
     }
 }

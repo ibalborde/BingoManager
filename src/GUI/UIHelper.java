@@ -1,9 +1,8 @@
 package GUI;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.stage.Window;
 
 import java.util.Optional;
 
@@ -27,23 +26,42 @@ public class UIHelper {
         return result.isPresent() ? result.get() : null;
     }
 
+
     /**
-     * Solicita al usuario confirmación para eliminar un elemento
-     * @param itemName Nombre del elemento a eliminar
+     * Solicita al usuario confirmación para realizar tarea destructiva
+     * @param message Mensaje
+     * @param destructiveOption Nombre del botón de confirmación
      * @return true si se ha confirmado
      */
-    public static boolean confirmDeletion(String itemName) {
+    public static boolean confirmDestructive(String message, String destructiveOption) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Confirmación de eliminación");
-        alert.setHeaderText("¿Está seguro que desea eliminar " + itemName);
+        alert.setTitle("Antes de continuar");
+        alert.setHeaderText("¿Está seguro que desea " + message);
 
-        ButtonType deleteButton = new ButtonType("Eliminar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType deleteButton = new ButtonType(destructiveOption, ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(deleteButton, cancelButton);
 
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == deleteButton;
+    }
+
+    /**
+     * Muestra un cuadro de diálogo modal
+     * @param title Título del cuadro de díalogo
+     * @param content Contenido del cuadro de diálogo
+     */
+    public static void showDialog(String title, Node content) {
+        Dialog<Void> dialog = new Dialog<>();
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> dialog.close());
+
+        dialog.setTitle(title);
+        dialog.getDialogPane().setContent(content);
+        dialog.show();
+
     }
 
 }

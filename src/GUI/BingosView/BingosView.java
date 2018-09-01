@@ -1,6 +1,7 @@
 package GUI.BingosView;
 
 import GUI.BingoCardView.BingoCardView;
+import GUI.BingoDetailView.BingoDetailView;
 import GUI.DialogsGenerator;
 import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
@@ -9,8 +10,10 @@ import Model.Database.BingoCard;
 import Model.Database.DBManager;
 import Model.Database.Database;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -30,7 +33,6 @@ public class BingosView implements Initializable {
         InventoryListViewSetter.prepareBingosInventory(inventoryListViewController);
 
         inventoryListViewController.getAddButton().setOnAction(e -> {
-            //DBManager.getInstance().getCurrentDatabase().addNewBingo();
             createBingos();
         });
         inventoryListViewController.getTableView().getSelectionModel().selectedItemProperty().addListener((obs, o, n) -> {
@@ -40,9 +42,8 @@ public class BingosView implements Initializable {
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
             TableView<BingoCard> table = inventoryListViewController.getTableView();
             BingoCard selectedItem = table.getSelectionModel().getSelectedItem();
-
             String id = selectedItem.getId();
-            if (UIHelper.confirmDeletion("bingo " + id)) {
+            if (UIHelper.confirmDestructive("eliminar el bingo " + id, "Eliminar")) {
                 DBManager.getInstance().getCurrentDatabase().removeBingo(id);
             }
         });
@@ -88,7 +89,21 @@ public class BingosView implements Initializable {
     // MARK: - Show Details
 
     @FXML private void showDetails() {
-        // TODO: completar para mostrar detalles
+        BingoCard bingoCard = inventoryListViewController.getTableView().getSelectionModel().getSelectedItem();
+        try {
+            URL url = getClass().getResource("../BingoDetailView/BingoDetailView.fxml");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(url);
+            Node content = fxmlLoader.load();
+
+            //fxmlLoader.setController(bingoDetailView);
+            BingoDetailView bingoDetailView = (BingoDetailView) fxmlLoader.getController();
+            bingoDetailView.setBingoCard(bingoCard);
+
+            UIHelper.showDialog("Detalles", content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

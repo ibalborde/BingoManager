@@ -37,7 +37,6 @@ public class BingoManager implements Initializable {
                 }
             }
         });
-        System.out.println(bingoPlayViewController);
         bingoPlayViewController.isPlayingProperty().addListener((obs, o, n) -> {
             bingosTab.setDisable(n);
             clientsTab.setDisable(n);

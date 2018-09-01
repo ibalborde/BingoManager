@@ -113,7 +113,7 @@ public class Database {
             }
         }
         String newID = generateNewID(bingosIndex.keySet());
-        BingoCard newBingo = new BingoCard(newID, bingoMatrix);
+        BingoCard newBingo = new BingoCard(newID, bingoMatrix, false);
 
         DBManager.getInstance().saveData(newBingo);
 

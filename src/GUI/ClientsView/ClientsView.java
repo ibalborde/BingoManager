@@ -46,7 +46,7 @@ public class ClientsView implements Initializable {
             Client selectedItem = table.getSelectionModel().getSelectedItem();
 
             String id = selectedItem.getId();
-            if (UIHelper.confirmDeletion("cliente " + selectedItem.getFullName())) {
+            if (UIHelper.confirmDestructive("eliminar al usuario" + selectedItem.getFullName(), "Eliminar")) {
                 DBManager.getInstance().getCurrentDatabase().removeClient(id);
             }
         });

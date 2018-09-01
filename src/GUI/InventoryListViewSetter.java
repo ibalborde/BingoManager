@@ -86,7 +86,7 @@ public class InventoryListViewSetter {
         TableView<BingoCard> table = inventoryListViewController.getTableView();
 
         // Sell Status Column
-        TableColumn<BingoCard, Boolean> bingoCardStatusColumn = new TableColumn<>("Estado");
+        TableColumn<BingoCard, Boolean> bingoCardStatusColumn = new TableColumn<>("Vendido");
         bingoCardStatusColumn.setCellValueFactory(
                 new PropertyValueFactory<BingoCard, Boolean>("owned")
         );
