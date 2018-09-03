@@ -1,6 +1,6 @@
 package GUI.WelcomeController;
 
-import GUI.UIHelper;
+import GUI.DialogsGenerator;
 import Model.Database.DBManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +25,7 @@ public class WelcomeController implements Initializable {
     public void createDB(){
       String newName = null;
       do {
-          newName = UIHelper.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
+          newName = DialogsGenerator.getUserTextInput("Crear Base de Datos","Ingrese el nombre de la nueva base de datos","Nueva base de datos:");
       } while (newName == null || dbManager.createDB(newName));
     }
 

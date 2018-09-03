@@ -1,14 +1,18 @@
 package GUI.ClientsView;
 
+import GUI.BingoDetailView.BingoDetailView;
+import GUI.ClientDetailView.ClientDetailView;
 import GUI.DialogsGenerator;
 import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
-import GUI.UIHelper;
+import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
 import Model.Database.Database;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -46,7 +50,7 @@ public class ClientsView implements Initializable {
             Client selectedItem = table.getSelectionModel().getSelectedItem();
 
             String id = selectedItem.getId();
-            if (UIHelper.confirmDestructive("eliminar al usuario" + selectedItem.getFullName(), "Eliminar")) {
+            if (DialogsGenerator.confirmDestructive("eliminar al usuario" + selectedItem.getFullName(), "Eliminar")) {
                 DBManager.getInstance().getCurrentDatabase().removeClient(id);
             }
         });
@@ -54,10 +58,22 @@ public class ClientsView implements Initializable {
 
     // MARK: - Internal
 
-
-
     @FXML private void showDetails() {
+        Client client = inventoryListViewController.getTableView().getSelectionModel().getSelectedItem();
+        try {
+            URL url = getClass().getResource("../ClientDetailView/ClientDetailView.fxml");
 
+            FXMLLoader fxmlLoader = new FXMLLoader(url);
+            Node content = fxmlLoader.load();
+
+            //fxmlLoader.setController(bingoDetailView);
+            ClientDetailView bingoDetailView = (ClientDetailView) fxmlLoader.getController();
+            bingoDetailView.setClient(client);
+
+            DialogsGenerator.showDialog("Detalles", content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setCurrentItem(Client client) {

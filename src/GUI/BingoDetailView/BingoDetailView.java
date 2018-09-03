@@ -3,7 +3,6 @@ package GUI.BingoDetailView;
 import GUI.DialogsGenerator;
 import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
-import GUI.UIHelper;
 import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
@@ -54,7 +53,7 @@ public class BingoDetailView implements Initializable {
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
             List<Client> clients = new ArrayList<>(selectionModel.getSelectedItems());
             String message = "eliminar " + clients.size() + " cliente(s)";
-            if (UIHelper.confirmDestructive(message, "Eliminar")) {
+            if (DialogsGenerator.confirmDestructive(message, "Eliminar")) {
                 for (Client client: clients) {
                     bingoCard.removeOwner(client.getId());
                 }
@@ -96,7 +95,7 @@ public class BingoDetailView implements Initializable {
             if (payCheckbox.isSelected()) {
                 bingoCard.setPayed(true);
                 dbManager.saveData(bingoCard);
-            } else if (UIHelper.confirmDestructive("marcar como \"no pagado\"", "Si")) {
+            } else if (DialogsGenerator.confirmDestructive("marcar como \"no pagado\"", "Si")) {
                 bingoCard.setPayed(false);
                 dbManager.saveData(bingoCard);
             } else {

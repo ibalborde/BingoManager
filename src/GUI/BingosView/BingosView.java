@@ -5,7 +5,6 @@ import GUI.BingoDetailView.BingoDetailView;
 import GUI.DialogsGenerator;
 import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
-import GUI.UIHelper;
 import Model.Database.BingoCard;
 import Model.Database.DBManager;
 import Model.Database.Database;
@@ -43,7 +42,7 @@ public class BingosView implements Initializable {
             TableView<BingoCard> table = inventoryListViewController.getTableView();
             BingoCard selectedItem = table.getSelectionModel().getSelectedItem();
             String id = selectedItem.getId();
-            if (UIHelper.confirmDestructive("eliminar el bingo " + id, "Eliminar")) {
+            if (DialogsGenerator.confirmDestructive("eliminar el bingo " + id, "Eliminar")) {
                 DBManager.getInstance().getCurrentDatabase().removeBingo(id);
             }
         });
@@ -100,7 +99,7 @@ public class BingosView implements Initializable {
             BingoDetailView bingoDetailView = (BingoDetailView) fxmlLoader.getController();
             bingoDetailView.setBingoCard(bingoCard);
 
-            UIHelper.showDialog("Detalles", content);
+            DialogsGenerator.showDialog("Detalles", content);
         } catch (Exception e) {
             e.printStackTrace();
         }
