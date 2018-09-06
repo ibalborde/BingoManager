@@ -301,4 +301,31 @@ public class DialogsGenerator {
         return dialog.showAndWait();
     }
 
+    /**
+     * Pregunta al usuario si quiere guardar los cambios
+     */
+    public static Optional<Boolean> askShouldSave() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Antes de continuar");
+        alert.setHeaderText("No se han guardado los cambios");
+        alert.setContentText("¿Desea guardar los cambios?");
+
+        // Buttons
+        ButtonType yesButton = new ButtonType("Si", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+        ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(cancelButton, yesButton, noButton);
+
+
+        alert.showAndWait();
+        ButtonType button = alert.getResult();
+        if (button == null || button == cancelButton) {
+            return Optional.empty();
+        } else if (button == yesButton) {
+            return Optional.of(true);
+        } else {
+            return Optional.of(false);
+        }
+    }
+
 }

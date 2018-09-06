@@ -203,12 +203,8 @@ public class Database {
         return bingos;
     }
 
-    public List<Client> retrieveBingoOwners(String bingoID) {
-        Object[] clients = bingosIndex.get(bingoID).getOwners().stream().map(it -> {
-            return bingosIndex.get(it);
-        }).toArray();
-
-        return Arrays.asList((Client[]) clients);
+    public ObservableList<Client> retrieveBingoOwners(String bingoID) {
+        return bingosIndex.get(bingoID).getOwners();
     }
 
     // Getters

@@ -30,8 +30,8 @@
                       <Label fx:id="idLabel" text="id" />
                   </children>
               </HBox>
-            <Button fx:id="saveButton" disable="true" mnemonicParsing="false" text="Guardar" />
-            <Button fx:id="editButton" mnemonicParsing="false" text="Editar" />
+            <Button fx:id="cancelButton" disable="true" mnemonicParsing="false" text="Cancelar" onAction="#cancelButtonPress"/>
+            <Button fx:id="editButton" mnemonicParsing="false" text="Editar" onAction="#editButtonPress" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" spacing="5.0">

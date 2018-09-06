@@ -6,7 +6,10 @@ import GUI.InventoryListViewSetter;
 import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
+import Model.Helper;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -29,6 +32,8 @@ public class BingoDetailView implements Initializable {
 
     private BingoCard bingoCard;
 
+    private ObservableList<Client> clients;
+
     // MARK: - Init
 
     @Override
@@ -42,6 +47,7 @@ public class BingoDetailView implements Initializable {
                 DialogsGenerator.askForClientList().ifPresent(list -> {
                     for (Client client: list) {
                         bingoCard.addOwner(client.getId());
+                        Helper.addUniqueElementToList(client, clients);
                     }
                     DBManager.getInstance().saveData(bingoCard);
                 });
@@ -51,11 +57,13 @@ public class BingoDetailView implements Initializable {
         });
 
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
-            List<Client> clients = new ArrayList<>(selectionModel.getSelectedItems());
-            String message = "eliminar " + clients.size() + " cliente(s)";
+            List<Client> selectedClients = new ArrayList<>(selectionModel.getSelectedItems());
+            String message = "eliminar " + selectedClients .size() + " cliente(s)";
             if (DialogsGenerator.confirmDestructive(message, "Eliminar")) {
-                for (Client client: clients) {
+
+                for (Client client: selectedClients) {
                     bingoCard.removeOwner(client.getId());
+                    clients.remove(client);
                 }
 
                 DBManager.getInstance().saveData(bingoCard);
@@ -77,18 +85,12 @@ public class BingoDetailView implements Initializable {
         this.payCheckbox.setDisable(!bingoCard.isOwned());
         this.inventoryListViewController.setModel(bingoCard.getOwners());
 
-
         bingoCard.payedProperty().addListener((obs, o, n) -> {
             payCheckbox.setSelected(n);
         });
 
-        bingoCard.getOwnersIds().addListener(new ListChangeListener<String>() {
-            @Override
-            public void onChanged(Change<? extends String> c) {
-                inventoryListViewController.setModel(bingoCard.getOwners());
-                payCheckbox.setDisable(!bingoCard.isOwned());
-            }
-        });
+        clients = DBManager.getInstance().getCurrentDatabase().retrieveBingoOwners(bingoCard.getId());
+        inventoryListViewController.setModel(clients);
 
         payCheckbox.setOnAction(e -> {
             DBManager dbManager = DBManager.getInstance();

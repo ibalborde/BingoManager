@@ -98,6 +98,26 @@ public class Client implements DBManagable{
         }
     }
 
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName.set(lastName);
+    }
+
+    public void setDni(String dni) {
+        this.dni.set(dni);
+    }
+
+    public void setAddress(String address) {
+        this.address.set(address);
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone.set(telephone);
+    }
+
     // MARK: - DBManagable
 
     public String getId() {
