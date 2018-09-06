@@ -10,9 +10,7 @@ import Model.Database.Database;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.Optional;
@@ -48,7 +46,22 @@ public class ClientDetailView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         InventoryListViewSetter.prepareBingosInventory(inventoryListViewController);
-        inventoryListViewController.getAddButton().setVisible(false);
+        inventoryListViewController.removeAddButton();
+
+        TableSelectionModel<BingoCard> selectionModel = inventoryListViewController.getTableView().getSelectionModel();
+        selectionModel.selectedItemProperty().addListener((obs, o, n) -> {
+            inventoryListViewController.getRemoveButton().setDisable(n == null);
+        });
+
+        inventoryListViewController.getRemoveButton().setOnAction(e -> {
+            BingoCard bingoCard = selectionModel.getSelectedItem();
+            boolean souldDelete = DialogsGenerator.confirmDestructive("eliminar el bingo " + bingoCard.getId(), "Eliminar");
+            if (souldDelete) {
+                bingos.remove(bingoCard);
+                DBManager.getInstance().getCurrentDatabase().removeClientFromSell(bingoCard.getId(), client.getId());
+                DBManager.getInstance().saveData(bingoCard);
+            }
+        });
     }
 
     // MARK: - Internal

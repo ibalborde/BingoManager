@@ -1,6 +1,5 @@
 package Model.Database;
 
-import Model.Database.DBManagable;
 import Model.Helper;
 import Model.Matrix;
 import javafx.beans.property.BooleanProperty;
@@ -9,12 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 
 public class BingoCard implements DBManagable {
 

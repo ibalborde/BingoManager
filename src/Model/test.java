@@ -1,7 +1,6 @@
 package Model;
 
 import Model.Database.DBManager;
-import Model.Database.Database;
 
 import java.util.*;
 

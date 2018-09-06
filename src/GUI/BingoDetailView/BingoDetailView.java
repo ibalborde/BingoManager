@@ -7,14 +7,12 @@ import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
 import Model.Helper;
-import javafx.application.Platform;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,24 +41,20 @@ public class BingoDetailView implements Initializable {
         InventoryListViewSetter.prepareClientInventory(inventoryListViewController);
 
         inventoryListViewController.getAddButton().setOnAction(e -> {
-            try {
-                DialogsGenerator.askForClientList().ifPresent(list -> {
-                    for (Client client: list) {
-                        bingoCard.addOwner(client.getId());
-                        Helper.addUniqueElementToList(client, clients);
-                    }
-                    DBManager.getInstance().saveData(bingoCard);
-                });
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            DialogsGenerator.askForClientList().ifPresent(list -> {
+                for (Client client: list) {
+                    bingoCard.addOwner(client.getId());
+                    Helper.addUniqueElementToList(client, clients);
+                }
+                DBManager.getInstance().saveData(bingoCard);
+            });
+
         });
 
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
             List<Client> selectedClients = new ArrayList<>(selectionModel.getSelectedItems());
             String message = "eliminar " + selectedClients .size() + " cliente(s)";
             if (DialogsGenerator.confirmDestructive(message, "Eliminar")) {
-
                 for (Client client: selectedClients) {
                     bingoCard.removeOwner(client.getId());
                     clients.remove(client);

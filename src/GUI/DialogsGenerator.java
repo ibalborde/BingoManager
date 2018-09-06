@@ -2,7 +2,6 @@ package GUI;
 
 import GUI.CustomTextFields.NumberSpinner;
 import GUI.InventoryListView.InventoryListView;
-import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
 import javafx.beans.value.ChangeListener;
@@ -254,9 +253,8 @@ public class DialogsGenerator {
     /**
      * Solicita al usuario una lista de clientes registrados
      * @return Opcional con la lista de clientes seleccionados
-     * @throws IOException Excepción lazanda al intentar abrir FXML con ruta equivocada
      */
-    public static Optional<List<Client>> askForClientList() throws IOException {
+    public static Optional<List<Client>> askForClientList() {
         Dialog<List<Client>> dialog = new Dialog<>();
         dialog.setTitle("Clientes");
         dialog.setHeaderText("Seleccione los clientes");
@@ -273,13 +271,22 @@ public class DialogsGenerator {
         // Preapara el contenido
         URL url = DialogsGenerator.class.getResource("InventoryListView/InventoryListView.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Node content = fxmlLoader.load();
+
+        Node content = null;
+        try {
+            content = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
         InventoryListView<Client> inventoryListView = (InventoryListView<Client>) fxmlLoader.getController();
         dialog.getDialogPane().setContent(content);
 
         // Configura la tabla
         InventoryListViewSetter.prepareClientInventory(inventoryListView);
-        inventoryListView.getAddButton().getParent().setVisible(false);
+        inventoryListView.removeAddButton();
+        inventoryListView.removeRemoveButton();
         inventoryListView.getTableView().getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // Carga los datos

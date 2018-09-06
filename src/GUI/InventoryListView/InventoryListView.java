@@ -1,6 +1,5 @@
 package GUI.InventoryListView;
 
-import javafx.beans.property.ObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -45,6 +44,28 @@ public class InventoryListView<T> implements Initializable {
         textField.textProperty().addListener((obs, o, n) -> updateFilter());
 
         updateFilter();
+    }
+
+    // MARK: - Interface
+
+    /**
+     * Elimina el botón de eliminar
+     */
+    public void removeRemoveButton() {
+        if (removeButton != null) {
+            HBox box = (HBox) removeButton.getParent();
+            box.getChildren().remove(removeButton);
+        }
+    }
+
+    /**
+     * Elimina el botón de agregar
+     */
+    public void removeAddButton() {
+        if (addButton != null) {
+            HBox box = (HBox) addButton.getParent();
+            box.getChildren().remove(addButton);
+        }
     }
 
     // MARK: - Internal

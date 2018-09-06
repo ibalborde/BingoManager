@@ -1,6 +1,5 @@
 package GUI.ClientsView;
 
-import GUI.BingoDetailView.BingoDetailView;
 import GUI.ClientDetailView.ClientDetailView;
 import GUI.DialogsGenerator;
 import GUI.InventoryListView.InventoryListView;
