@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/BingoDetailView/BingoDetailView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingoDetailView/BingoDetailView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/ClientDetailView/ClientDetailView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ClientDetailView/ClientDetailView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ClientsView/ClientsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CustomTextFields/number_spinner.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/DialogsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/DialogsGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/InventoryListView/InventoryListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/InventoryListView/InventoryListView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Database/BingoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Database/BingoCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -172,31 +165,34 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="fxml" value="24" />
-          <entry key="java" value="2949" />
+          <entry key="fxml" value="310" />
+          <entry key="java" value="3379" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2949" />
-          <entry key="XML" value="24" />
+          <entry key="JAVA" value="3379" />
+          <entry key="XML" value="310" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="24" />
+          <entry key="fxml" value="1" />
+          <entry key="java" value="26" />
           <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="24" />
+          <entry key="JAVA" value="26" />
           <entry key="PLAIN_TEXT" value="1" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -206,115 +202,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2030">
-              <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Database/BingoCard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Database/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1138">
-              <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-              <folding>
-                <element signature="e#2399#2400#0" expanded="true" />
-                <element signature="e#2434#2435#0" expanded="true" />
-                <element signature="e#2482#2483#0" expanded="true" />
-                <element signature="e#2525#2526#0" expanded="true" />
-                <element signature="e#2563#2564#0" expanded="true" />
-                <element signature="e#2596#2597#0" expanded="true" />
-                <element signature="e#2642#2643#0" expanded="true" />
-                <element signature="e#2683#2684#0" expanded="true" />
-                <element signature="e#2733#2734#0" expanded="true" />
-                <element signature="e#2778#2779#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Database/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4553">
-              <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
-              <folding>
-                <element signature="e#6474#6475#0" expanded="true" />
-                <element signature="e#6533#6534#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Database/DBManager.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="145">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Helper.java">
+        <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3799">
-              <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
+            <state relative-caret-position="60">
+              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/BingoGenerator.java">
+        <entry file="file://$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Matrix.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="162">
+              <caret line="62" column="50" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1737#1738#0" expanded="true" />
+                <element signature="e#1790#1791#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/todo.md">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -351,6 +269,7 @@
       <find>dni</find>
       <find>split</find>
       <find>deny</find>
+      <find>numberField</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -387,15 +306,12 @@
         <option value="$PROJECT_DIR$/src/Model/Database/DBManagable.java" />
         <option value="$PROJECT_DIR$/src/Model/Database/DBManager.java" />
         <option value="$PROJECT_DIR$/src/GUI/InventoryListView/InventoryListView.fxml" />
-        <option value="$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java" />
         <option value="$PROJECT_DIR$/src/GUI/CustomTextFields/NumberTextField.java" />
         <option value="$PROJECT_DIR$/src/GUI/DialogPanes/CreateBingoPane/CreateBingoPane.java" />
         <option value="$PROJECT_DIR$/src/GUI/DialogPanes/CreateBingoPane/CreateBingoPane.fxml" />
         <option value="$PROJECT_DIR$/src/GUI/BingoCardView/BingoCardView.java" />
         <option value="$PROJECT_DIR$/src/Model/BingoGenerator.java" />
         <option value="$PROJECT_DIR$/src/GUI/BingosView/BingosView.fxml" />
-        <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml" />
-        <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java" />
         <option value="$PROJECT_DIR$/src/GUI/InventoryListViewHelper.java" />
         <option value="$PROJECT_DIR$/src/GUI/BingoManager/BingoManager.fxml" />
         <option value="$PROJECT_DIR$/src/GUI/BingoDetailView/BingoDetailView.fxml" />
@@ -418,6 +334,9 @@
         <option value="$PROJECT_DIR$/src/Model/Database/BingoCard.java" />
         <option value="$PROJECT_DIR$/src/Model/Matrix.java" />
         <option value="$PROJECT_DIR$/src/Model/test.java" />
+        <option value="$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java" />
+        <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java" />
+        <option value="$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml" />
       </list>
     </option>
   </component>
@@ -435,8 +354,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -444,21 +361,12 @@
               <item name="BingoManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="BingoManager" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="BingoManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BingoManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BingoManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BingoManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -474,7 +382,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534210351106" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536276257281" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -604,7 +512,7 @@
     <frame x="0" y="0" width="1280" height="720" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22778675" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.23101777" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -626,7 +534,7 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50078124" side_tool="true" weight="0.38473055" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3246154" />
       <window_info anchor="bottom" id="Floobits" order="14" weight="0.32934132" />
-      <window_info anchor="bottom" id="Terminal" order="15" weight="0.32930514" />
+      <window_info anchor="bottom" id="Terminal" order="15" weight="0.32923076" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -639,7 +547,7 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.228125" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23101777" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -648,7 +556,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32934132" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49921876" visible="true" weight="0.3846154" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49921876" weight="0.3846154" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -661,7 +569,7 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50078124" side_tool="true" weight="0.38473055" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3246154" />
       <window_info anchor="bottom" id="Floobits" order="14" weight="0.32934132" />
-      <window_info anchor="bottom" id="Terminal" order="15" weight="0.32930514" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="15" visible="true" weight="0.32923076" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -734,14 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -845,22 +745,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/UIHelper.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/BingoDetailView/BingoDetailView.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="27" column="13" selection-start-line="11" selection-start-column="3" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="n#Label#0;n#children#0;n#HBox#0;n#children#0;n#VBox#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,15 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="33" column="103" selection-start-line="33" selection-start-column="103" selection-end-line="33" selection-end-column="103" />
-          <folding>
-            <element signature="n#HBox#0;n#children#0;n#HBox#0;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#HBox#1;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#HBox#2;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#HBox#3;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#HBox#4;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#HBox#5;n#children#0;n#VBox#0;n#!!top" />
-            <element signature="n#children#0;n#HBox#6;n#children#0;n#VBox#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,10 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="705" column="22" selection-start-line="705" selection-start-column="22" selection-end-line="705" selection-end-column="22" />
-          <folding>
-            <element signature="e#27809#27810#0" expanded="true" />
-            <element signature="e#27866#27867#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -896,12 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-552">
           <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
-          <folding>
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#2570#2571#0" expanded="true" />
-            <element signature="e#2628#2629#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,23 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2027#2028#0" expanded="true" />
-            <element signature="e#2062#2063#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-            <element signature="e#2130#2131#0" expanded="true" />
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
-            <element signature="e#2246#2247#0" expanded="true" />
-            <element signature="e#2278#2279#0" expanded="true" />
-            <element signature="e#2317#2318#0" expanded="true" />
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2389#2390#0" expanded="true" />
-            <element signature="e#2427#2428#0" expanded="true" />
-            <element signature="e#2513#2514#0" expanded="true" />
-            <element signature="e#2560#2561#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -960,9 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
           <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="39" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -970,10 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1392">
           <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#saveData#0;class#ClientDetailView#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,9 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-107">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -991,16 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1027,29 +861,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java">
+    <entry file="file://$PROJECT_DIR$/src/todo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2030">
-          <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+        <state relative-caret-position="87">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Database/BingoCard.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/BingoGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="533">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Helper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Database/DBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#6474#6475#0" expanded="true" />
+            <element signature="e#6533#6534#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Database/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1138">
+        <state relative-caret-position="533">
           <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
           <folding>
             <element signature="e#2399#2400#0" expanded="true" />
@@ -1066,57 +938,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Database/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Database/BingoCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4553">
-          <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
-          <folding>
-            <element signature="e#6474#6475#0" expanded="true" />
-            <element signature="e#6533#6534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Database/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3799">
-          <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/BingoGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="319">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/test.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/InventoryListViewSetter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state>
+          <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/todo.md">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/GUI/CustomTextFields/NumberSpinner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="62" column="50" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1737#1738#0" expanded="true" />
+            <element signature="e#1790#1791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/BingoPlayView/BingoPlayView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.LineTo;
@@ -59,6 +60,7 @@ public class NumberSpinner extends HBox {
         // TextField
         numberField = new NumberTextField(value, nf);
         numberField.setId(NUMBER_FIELD);
+        HBox.setHgrow(numberField, Priority.ALWAYS);
 
         // Enable arrow keys for dec/inc
         numberField.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
