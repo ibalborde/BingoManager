@@ -4,6 +4,9 @@ import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
 import Model.Database.BingoCard;
 import Model.Database.Client;
+import Model.Database.DBManager;
+import Model.Database.Database;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,6 +37,8 @@ public class ClientDetailView implements Initializable {
 
     private Client client;
 
+    private ObservableList<BingoCard> bingos;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         InventoryListViewSetter.prepareBingosInventory(inventoryListViewController);
@@ -52,7 +57,8 @@ public class ClientDetailView implements Initializable {
         addressTextField.setText(client.getAddress());
         telephoneTextField.setText(client.getTelephone());
 
-        // TODO SEt the bingos
-        //inventoryListViewController.setModel(client.getb);
+        Database database = DBManager.getInstance().getCurrentDatabase();
+        bingos = database.retrieveClientBingsCards(client.getId());
+        inventoryListViewController.setModel(bingos);
     }
 }

@@ -188,10 +188,15 @@ public class Database {
 
     // MARK: - Retrieving
 
-    public List<BingoCard> retrieveClientBingsCards(String clientID) {
-        List<BingoCard> bingos = new ArrayList<>();
+    /**
+     * Dado un id de cliente retorna los bingos que le pertenece
+     * @param clientID Id de cliente
+     * @return Lista de bingos del cliente
+     */
+    public ObservableList<BingoCard> retrieveClientBingsCards(String clientID) {
+        ObservableList<BingoCard> bingos = FXCollections.observableArrayList();
         bingosIndex.forEach((id, bingo) -> {
-            if (bingo.getOwners().contains(clientID)) {
+            if (bingo.getOwnersIds().contains(clientID)) {
                 bingos.add(bingo);
             }
         });

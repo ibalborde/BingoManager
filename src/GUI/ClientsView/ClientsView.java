@@ -9,6 +9,7 @@ import Model.Database.BingoCard;
 import Model.Database.Client;
 import Model.Database.DBManager;
 import Model.Database.Database;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,11 +48,19 @@ public class ClientsView implements Initializable {
             DialogsGenerator.askForNewClient().ifPresent(client -> db.addNewClient(client));
         });
         inventoryListViewController.getRemoveButton().setOnAction(e -> {
+            Database database = DBManager.getInstance().getCurrentDatabase();
             Client selectedItem = table.getSelectionModel().getSelectedItem();
+            ObservableList<BingoCard> bingos = database.retrieveClientBingsCards(selectedItem.getId());
+
+            System.out.println(bingos);
+            if (!bingos.isEmpty()) {
+                this.showDenyDeletionDialog();
+                return;
+            }
 
             String id = selectedItem.getId();
             if (DialogsGenerator.confirmDestructive("eliminar al usuario" + selectedItem.getFullName(), "Eliminar")) {
-                DBManager.getInstance().getCurrentDatabase().removeClient(id);
+                database.removeClient(id);
             }
         });
     }
@@ -74,6 +83,17 @@ public class ClientsView implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Muestra un cuadro de dialogo al denegar una eliminación de usuario
+     */
+    private void showDenyDeletionDialog() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("No se puede eliminar un cliente que tenga bingos vendidos");
+        alert.setContentText("Elimine los bingos de este cliente antes de eliminarlo");
+        alert.showAndWait();
     }
 
     private void setCurrentItem(Client client) {

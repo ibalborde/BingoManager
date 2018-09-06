@@ -70,7 +70,7 @@ public class InventoryListViewSetter {
 
         @Override
         public boolean shouldIncoude(BingoCard element, String pattern) {
-            List<String> numbers = Arrays.asList(pattern.split(" "));
+            List<String> numbers = Arrays.asList(pattern.split("\\s+"));
             return Helper.matrixContains(element.getBingo(), numbers) ||
                     Helper.match(pattern, element.getId());
         }
