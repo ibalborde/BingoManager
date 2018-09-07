@@ -77,8 +77,7 @@ public class DialogsGenerator {
 
         dialog.setTitle(title);
         dialog.getDialogPane().setContent(content);
-        dialog.show();
-
+        dialog.showAndWait();
     }
 
     /**

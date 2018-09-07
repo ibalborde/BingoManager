@@ -2,6 +2,8 @@ package Model.Database;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import org.json.JSONObject;
 
 public class Client implements DBManagable{
@@ -36,6 +38,16 @@ public class Client implements DBManagable{
         this.dni = new SimpleStringProperty(dni);
         this.address = new SimpleStringProperty(address);
         this.telephone = new SimpleStringProperty(telephone);
+
+        // Agrega listener para cuando se modifica el nombre o apellido
+        ChangeListener cl = new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                fullName.setValue(getName() + " " + getLastName());
+            }
+        };
+        this.name.addListener(cl);
+        this.lastName.addListener(cl);
     }
 
     // MARK: - Getters && Setters

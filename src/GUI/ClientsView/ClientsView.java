@@ -51,7 +51,6 @@ public class ClientsView implements Initializable {
             Client selectedItem = table.getSelectionModel().getSelectedItem();
             ObservableList<BingoCard> bingos = database.retrieveClientBingsCards(selectedItem.getId());
 
-            System.out.println(bingos);
             if (!bingos.isEmpty()) {
                 this.showDenyDeletionDialog();
                 return;
@@ -74,7 +73,6 @@ public class ClientsView implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(url);
             Node content = fxmlLoader.load();
 
-            //fxmlLoader.setController(bingoDetailView);
             ClientDetailView bingoDetailView = (ClientDetailView) fxmlLoader.getController();
             bingoDetailView.setClient(client);
 
@@ -97,11 +95,13 @@ public class ClientsView implements Initializable {
 
     private void setCurrentItem(Client client) {
         if (client == null) {
+            clientIDLabel.textProperty().unbind();
+            clientNameLabel.textProperty().unbind();
             clientIDLabel.setText(null);
             clientNameLabel.setText(null);
         } else {
-            clientIDLabel.setText(client.getId());
-            clientNameLabel.setText(client.getFullName());
+            clientIDLabel.textProperty().bind(client.idProperty());
+            clientNameLabel.textProperty().bind(client.fullNameProperty());
         }
     }
 

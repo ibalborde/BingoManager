@@ -64,6 +64,7 @@ public class BingoDetailView implements Initializable {
             }
         });
 
+        // Selección de items
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
         selectionModel.selectedItemProperty().addListener((obs, o, n) -> {
             inventoryListViewController.getRemoveButton().setDisable(n == null);
@@ -74,11 +75,13 @@ public class BingoDetailView implements Initializable {
 
     public void setBingoCard(BingoCard bingoCard) {
         this.bingoCard = bingoCard;
-        this.idLabel.setText(bingoCard.getId());
-        this.payCheckbox.setSelected(bingoCard.isPayed());
-        this.payCheckbox.setDisable(!bingoCard.isOwned());
+
+        this.idLabel.textProperty().bind(bingoCard.idProperty());
+        this.payCheckbox.disableProperty().bind(bingoCard.ownedProperty().not()); // .setDisable(!bingoCard.isOwned());
         this.inventoryListViewController.setModel(bingoCard.getOwners());
 
+        // Estado del checkbox
+        this.payCheckbox.setSelected(bingoCard.isPayed());
         bingoCard.payedProperty().addListener((obs, o, n) -> {
             payCheckbox.setSelected(n);
         });
