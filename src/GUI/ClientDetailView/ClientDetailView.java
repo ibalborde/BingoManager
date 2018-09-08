@@ -62,6 +62,7 @@ public class ClientDetailView implements Initializable {
                 DBManager.getInstance().saveData(bingoCard);
             }
         });
+        inventoryListViewController.getTableView().setMinHeight(200);
     }
 
     // MARK: - Internal

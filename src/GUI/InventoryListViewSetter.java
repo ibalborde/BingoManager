@@ -99,8 +99,8 @@ public class InventoryListViewSetter {
         );
         table.widthProperty().addListener((obs, o, width) -> {
             double w = width.doubleValue();
-            bingoCardStatusColumn.setPrefWidth(w * 0.1);
-            bingoIDColumn.setPrefWidth(w * 0.9);
+            bingoCardStatusColumn.setPrefWidth(w * 0.2);
+            bingoIDColumn.setPrefWidth(w * 0.8);
         });
 
         table.getColumns().addAll(bingoCardStatusColumn, bingoIDColumn);
