@@ -4,23 +4,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" spacing="4" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BingoPlayView.BingoPlayView">
+<VBox prefHeight="400.0" prefWidth="600.0" spacing="4" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BingoPlayView.BingoPlayView" >
     <children>
-        <HBox fx:id="numberInsertBox" spacing="8" alignment="CENTER">
-            <children>
-                <Label text="Numero:" />
-                <TextField fx:id="numberTextField" onAction="#addNumber"/>
-                <Button fx:id="addButton" onAction="#addNumber" text="Agregar" disable="true"/>
-            </children>
-        </HBox>
-        <ListView fx:id="numbersListView" />
-        <Label text="Ganadores:"/>
-        <fx:include fx:id="inventoryListView" source="../InventoryListView/InventoryListView.fxml" VBox.vgrow="ALWAYS"/>
+        <TilePane fx:id="numbersGrid"/>
+        <Label text="Ganadores:" />
+        <fx:include fx:id="inventoryListView" source="../InventoryListView/InventoryListView.fxml" VBox.vgrow="ALWAYS" />
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button mnemonicParsing="false" text="Terminar Juego" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button mnemonicParsing="false" text="Mostrar Detalles" disable="true"/>
+                <Button disable="true" mnemonicParsing="false" text="Mostrar Detalles" />
             </children>
         </HBox>
     </children>

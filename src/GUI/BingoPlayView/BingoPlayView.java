@@ -1,13 +1,11 @@
 package GUI.BingoPlayView;
 
-import GUI.CustomTextFields.NumberTextField;
 import GUI.InventoryListView.InventoryListView;
 import GUI.InventoryListViewSetter;
 import Model.Database.BingoCard;
 
 import Model.Database.DBManager;
 import Model.Database.Database;
-import Model.Helper;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -15,28 +13,22 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class BingoPlayView implements Initializable {
 
     // MARK: - GUI
 
-    @FXML private VBox inventoryListView;
-    @FXML private HBox numberInsertBox;
-
-    @FXML private ListView<Integer> numbersListView;
-
-    @FXML private Button addButton;
-    @FXML private TextField numberTextField;
+    @FXML private TilePane numbersGrid;
 
     @FXML private InventoryListView<BingoCard> inventoryListViewController;
 
@@ -46,29 +38,19 @@ public class BingoPlayView implements Initializable {
 
     private FilteredList<BingoCard> bingoCards;
 
-    private ObservableList<Integer> numbers;
+    private Map<BingoCard, Set<Integer>> bingosIndex;
 
-    private Integer value;
+    private Set<Integer> numbers;
+
+    private ObservableList<BooleanProperty> numberSelections;
 
     // MARK: - Init
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        numberTextField.textProperty().addListener((obs, o, n) -> {
-            try {
-                this.value = Integer.parseInt(n);
-                if (value > 0 && value < 100) {
-                    addButton.setDisable(false);
-                    System.out.println(value);
-                    return;
-                }
-            } catch (Exception e) {}
-            this.value = null;
-            addButton.setDisable(true);
-        });
-
-        numbers = FXCollections.observableArrayList();
-        numbersListView.setItems(numbers);
+        this.bingosIndex = new HashMap<BingoCard, Set<Integer>>();
+        this.numbers = new HashSet<>();
+        this.numberSelections = FXCollections.observableArrayList();
 
         isPlaying = new SimpleBooleanProperty();
         isPlaying.addListener((obs, o, n) -> {
@@ -77,7 +59,10 @@ public class BingoPlayView implements Initializable {
             }
         });
 
-        numberTextField.setPrefWidth(200);
+        numbersGrid.setHgap(8);
+        numbersGrid.setVgap(4);
+        numbersGrid.setPrefColumns(10);
+        numbersGrid.setTileAlignment(Pos.TOP_LEFT);
 
         inventoryListViewController.removeRemoveButton();
         inventoryListViewController.removeAddButton();
@@ -86,18 +71,41 @@ public class BingoPlayView implements Initializable {
 
     // MARK: - Internal
 
-    @FXML private void addNumber() {
-        if (value != null && Helper.addUniqueElementToList(value, numbers)) {
-            updateBingos();
+    private void setNumberSelections() {
+        numberSelections.clear();
+        for (int i = 1; i < 100; i++) {
+            final int index = i;
+            BooleanProperty booleanProperty = new SimpleBooleanProperty();
+            booleanProperty.addListener((obs, o, n) -> {
+                if (n) {
+                    this.numbers.add(index);
+                } else {
+                    this.numbers.remove(index);
+                }
+                updateBingos();
+            });
+            numberSelections.add(booleanProperty);
+        }
+    }
+
+    private void fillNumbersBox() {
+        for (int i = 1; i <= 99; i++) {
+            String text = "" + i;
+
+            CheckBox checkBox = new CheckBox(text);
+            checkBox.selectedProperty().bindBidirectional(numberSelections.get(i - 1));
+
+            numbersGrid.getChildren().add(checkBox);
         }
     }
 
     private void updateBingos() {
-        List<Integer> numbers = numbersListView.getItems().sorted();
         bingoCards.setPredicate(it -> {
-            ArrayList<Integer> bnumbers = it.getBingo().getNotNullValues();
-
-            return numbers.equals(bnumbers);
+            if (numbers.isEmpty()) {
+                return false;
+            }
+            Set<Integer> itNumbers = this.bingosIndex.get(it);
+            return numbers.containsAll(itNumbers);
         });
     }
 
@@ -106,9 +114,19 @@ public class BingoPlayView implements Initializable {
      */
     private void prepareForPlay() {
         Database database = DBManager.getInstance().getCurrentDatabase();
-        this.bingoCards = new FilteredList<>(database.retrieveSelledBingos());
+        ObservableList<BingoCard> bingos = database.retrieveSelledBingos();
 
+        for (BingoCard bingoCard: bingos) {
+            Set<Integer> numbers = new HashSet<>(bingoCard.getBingo().getNotNullValues());
+            bingosIndex.put(bingoCard, numbers);
+        }
+        this.bingoCards = new FilteredList<>(bingos);
         inventoryListViewController.setModel(bingoCards);
+
+        this.setNumberSelections();
+        this.fillNumbersBox();
+
+        this.updateBingos();
     }
 
     // MARK: - Getters & Setters
@@ -124,4 +142,5 @@ public class BingoPlayView implements Initializable {
     public BooleanProperty isPlayingProperty() {
         return isPlaying;
     }
+
 }
