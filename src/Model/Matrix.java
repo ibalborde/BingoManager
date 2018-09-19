@@ -3,6 +3,7 @@ package Model;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Matrix<Element> {
 
@@ -119,6 +120,22 @@ public class Matrix<Element> {
             }
             System.out.println();
         }
+    }
+
+    /**
+     * Obtiene los valores dentro de la matrix
+     */
+    public ArrayList<Element> getNotNullValues() {
+        ArrayList<Element> result = new ArrayList<>();
+        for (int row = 0; row < getRows(); row++) {
+            for (int col = 0; col < getColumns(); col++) {
+                Element e = get(row,col);
+                if (e != null) {
+                    result.add(e);
+                }
+            }
+        }
+        return result;
     }
 
     // MARK: - JSON Generation

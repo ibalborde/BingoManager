@@ -9,7 +9,8 @@
         <HBox fx:id="numberInsertBox" spacing="8" alignment="CENTER">
             <children>
                 <Label text="Numero:" />
-                <Button fx:id="addButton" onAction="#addNumber" text="Agregar" />
+                <TextField fx:id="numberTextField" onAction="#addNumber"/>
+                <Button fx:id="addButton" onAction="#addNumber" text="Agregar" disable="true"/>
             </children>
         </HBox>
         <ListView fx:id="numbersListView" />

@@ -207,6 +207,19 @@ public class Database {
         return bingosIndex.get(bingoID).getOwners();
     }
 
+    /**
+     * Obtiene una lista de bingos adquiridos
+     */
+    public ObservableList<BingoCard> retrieveSelledBingos() {
+        ObservableList<BingoCard> result = FXCollections.observableArrayList();
+        for (BingoCard bingoCard: getBingos()) {
+            if (bingoCard.isOwned()) {
+                result.add(bingoCard);
+            }
+        }
+        return result;
+    }
+
     // Getters
 
     public ObservableList<BingoCard> getBingos() {
